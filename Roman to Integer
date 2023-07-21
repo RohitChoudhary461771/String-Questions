@@ -1,0 +1,48 @@
+class Solution {
+public:
+    int convert(char c){
+        switch(c){
+            case 'I':
+                return 1;
+                break;
+            case'V':
+                return 5;
+                break;
+            case'X':
+                return 10;
+                break;
+            case'L':
+                return 50;
+                break;
+            case'C':
+                return 100;
+                break;
+             case'D':
+                return 500;
+                break;
+            case'M':
+                return 1000;
+                break;
+        }
+        return -1;
+    }
+    
+    
+    int romanToInt(string s) {
+    if(s.size()==1) 
+    return convert(s[0]);
+        
+    int j = s.size()-1;
+        int ans=convert(s[j]);
+        while(j>0){
+            if(convert(s[j-1])>=convert(s[j])){
+                ans += convert(s[j-1]);
+            }
+            else{
+                ans-=convert(s[j-1]);
+            }
+       j--; 
+    }
+        return ans;
+    }
+};
