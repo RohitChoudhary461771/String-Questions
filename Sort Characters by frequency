@@ -1,0 +1,34 @@
+
+//👉 Brute Approach.
+
+class Solution {
+public:
+static bool cmp(const pair<int,int>&a ,const pair<int,int>&b){
+    return a.second>b.second;
+}
+    string frequencySort(string s) {
+       map<int,int>mpp;
+       vector<pair<int,int>>vec;
+
+       for(int i=0;i<s.length();i++){
+           mpp[s[i]-'a']++;
+       }
+
+       for(auto it:mpp){
+           cout<<it.first<<" ";
+           vec.push_back({it.first,it.second});
+       }
+
+       sort(vec.begin(),vec.end(),cmp);
+       string s1;
+
+       for(int i=0;i<vec.size();i++){
+          char a1=vec[i].first+'a';
+          int n=vec[i].second;
+          while(n!=0){
+           s1+=a1;
+           n--;
+       }}
+       return s1;
+    }
+};
