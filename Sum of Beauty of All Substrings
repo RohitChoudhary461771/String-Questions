@@ -1,0 +1,31 @@
+Complexity
+
+Time complexity:O(n^3) worst case if all the character are distinct in the string.
+Space complexity:O(n) worst case.
+
+
+Code
+class Solution {
+public:
+    int beautySum(string s) {
+        int n=s.length();
+        int cnt=0;
+        for(int i=0;i<n;i++){
+
+          unordered_map<char,int>mpp;
+          int maxi=0,mini=INT_MAX;
+
+            for(int j=i;j<n;j++){
+                mpp[s[j]]++;
+                maxi=max(maxi,mpp[s[j]]);
+                
+                mini=mpp[s[j]];
+                for(auto it:mpp ){
+                    if(it.second<mini)mini=it.second;
+                }
+                cnt+=maxi-mini;
+            }
+        }
+        return cnt;
+    }
+};
